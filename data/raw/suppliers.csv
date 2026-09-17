@@ -1,101 +1,61 @@
-SupplierID,SupplierName,LeadTimeDays,QualityScore
-1,"Dodson, Wright and Green",29,87.17
-2,"Henson, Mcdonald and Fisher",14,82.78
-3,"Carrillo, Houston and Salazar",27,76.63
-4,Davila-Mcintosh,4,70.88
-5,Anthony Group,27,88.8
-6,"Jimenez, Hardin and Miller",9,95.95
-7,"Jackson, Baxter and Flores",20,91.6
-8,Lutz Inc,12,75.73
-9,"Webster, Mora and Patton",6,99.39
-10,Carter-Donovan,27,84.09
-11,Mcgee-Barry,16,74.17
-12,Francis PLC,15,89.56
-13,Smith-Delacruz,5,70.37
-14,Davis Ltd,18,76.54
-15,"Davis, Thompson and Prince",27,93.51
-16,Sparks-Little,23,75.96
-17,Ryan PLC,14,91.24
-18,Larson Group,7,91.31
-19,Murray Inc,16,91.43
-20,Murphy PLC,22,95.82
-21,Gilbert Ltd,11,79.7
-22,Gallegos-Jones,25,87.73
-23,"Irwin, Melendez and Stokes",4,93.26
-24,Bean-Anderson,6,70.96
-25,"Johnson, Jackson and Ellison",5,70.28
-26,Jones LLC,17,97.27
-27,Smith LLC,2,75.37
-28,Wells-Conner,9,96.88
-29,Green Inc,22,86.9
-30,Matthews-Ortiz,3,84.49
-31,"Wilcox, Rose and Williams",29,92.58
-32,Hill-Camacho,19,77.72
-33,Burgess Group,21,70.34
-34,"Yates, Wagner and Robinson",3,96.86
-35,"Clark, Jefferson and Sherman",23,86.34
-36,Hernandez-Cruz,27,97.86
-37,Good-Nielsen,11,98.96
-38,"Morris, Carter and Wall",25,77.22
-39,Mcclure-Daniels,14,81.64
-40,"Nelson, Wilson and Erickson",8,84.29
-41,Santos and Sons,7,76.23
-42,Cook-Smith,22,88.08
-43,"Turner, Gentry and Mitchell",9,96.85
-44,Brown Ltd,27,99.13
-45,"Munoz, House and Andrade",10,96.53
-46,Phillips PLC,15,82.58
-47,Johnston-Palmer,15,73.76
-48,Howell LLC,16,83.65
-49,Kelley Ltd,18,91.74
-50,Smith-Garza,7,76.59
-51,"Rocha, Moss and Rodriguez",19,71.52
-52,"Graham, Bailey and Mitchell",12,88.95
-53,Shields LLC,28,99.0
-54,Floyd PLC,2,92.24
-55,Allen Inc,2,94.94
-56,"Nelson, Douglas and Davis",6,99.75
-57,Davis Group,6,71.95
-58,"Wagner, Smith and Cook",14,80.79
-59,"Mclean, Barrett and Nguyen",11,84.3
-60,"Weber, Guerrero and Warren",21,74.69
-61,"Woods, Thomas and Turner",22,82.59
-62,Kim Ltd,28,70.32
-63,Strickland-Bradley,7,71.89
-64,"Savage, Gibson and Wilson",17,76.48
-65,"Macias, Merritt and Jones",28,87.37
-66,"Warren, Hart and Cox",4,82.18
-67,Thompson Group,21,87.95
-68,"Freeman, Thompson and Curtis",28,76.44
-69,Guzman-Cruz,13,77.42
-70,Morales-Gardner,24,73.29
-71,Johnson Group,4,97.36
-72,Wilson Ltd,7,89.28
-73,"Eaton, Williams and Johnson",20,82.39
-74,"Stewart, Ortega and Perez",15,86.22
-75,Smith Ltd,19,82.18
-76,Andersen-Garcia,20,89.81
-77,Black-Garcia,18,71.87
-78,Brown-Pearson,28,97.84
-79,Frost PLC,5,99.22
-80,Hurley-Winters,5,78.5
-81,Jones PLC,20,90.26
-82,Baldwin LLC,8,90.47
-83,Herrera and Sons,6,98.29
-84,Watts and Sons,9,85.36
-85,Davis and Sons,22,86.69
-86,Davis-Rose,19,93.83
-87,Rangel-Mcclure,25,97.49
-88,"Phillips, Petty and Farmer",12,93.05
-89,Gregory and Sons,28,75.04
-90,Ross-Farmer,19,99.3
-91,Davis-Carlson,24,83.19
-92,Santana-Walker,28,72.99
-93,Brady LLC,4,83.2
-94,Bennett-Harris,9,70.09
-95,"Davis, Lewis and Hubbard",24,71.59
-96,"Johnson, Jones and White",3,97.28
-97,"Benjamin, Arroyo and Harvey",25,93.84
-98,Wood PLC,6,78.5
-99,Wise-Weeks,2,70.22
-100,Fox-Olson,22,74.09
+SupplierID,SupplierName,Country,SupplierTier,LeadTimeDays,QualityScore,CostRating,RiskLevel
+1,Summit Gear Co.,USA,Premium,5,98,High,Low
+2,Alpine Supply,USA,Strategic,7,95,Medium,Low
+3,TrailWorks,Vietnam,Cost Leader,18,86,Low,Low
+4,Peak Manufacturing,China,Standard,12,90,Medium,Low
+5,North Ridge Imports,China,High Risk,25,75,Very Low,High
+6,Outdoor Supplier 6,USA,Cost Leader,11,83,Low,Medium
+7,Outdoor Supplier 7,Canada,Cost Leader,8,87,High,Medium
+8,Outdoor Supplier 8,Mexico,Strategic,7,82,Low,Medium
+9,Outdoor Supplier 9,Canada,Standard,15,82,High,Medium
+10,Outdoor Supplier 10,Mexico,Standard,18,80,High,Medium
+11,Outdoor Supplier 11,Canada,Strategic,16,93,Medium,Medium
+12,Outdoor Supplier 12,Canada,Cost Leader,13,80,Medium,Medium
+13,Outdoor Supplier 13,Canada,Standard,19,88,Medium,Medium
+14,Outdoor Supplier 14,USA,Strategic,8,83,Medium,Medium
+15,Outdoor Supplier 15,Mexico,Strategic,19,91,Low,Medium
+16,Outdoor Supplier 16,Mexico,Standard,13,94,Low,Medium
+17,Outdoor Supplier 17,Mexico,Strategic,16,89,Low,Medium
+18,Outdoor Supplier 18,USA,Cost Leader,10,82,Medium,Medium
+19,Outdoor Supplier 19,Canada,Standard,13,82,Medium,Medium
+20,Outdoor Supplier 20,China,Standard,12,94,Medium,Medium
+21,Outdoor Supplier 21,China,Cost Leader,17,86,High,Medium
+22,Outdoor Supplier 22,Mexico,Cost Leader,9,82,High,Medium
+23,Outdoor Supplier 23,Canada,Strategic,13,87,Medium,Medium
+24,Outdoor Supplier 24,China,Standard,10,87,Low,Medium
+25,Outdoor Supplier 25,Vietnam,Strategic,8,90,Low,Medium
+26,Outdoor Supplier 26,Canada,Cost Leader,14,90,Medium,Medium
+27,Outdoor Supplier 27,Canada,Strategic,9,94,Low,Medium
+28,Outdoor Supplier 28,Mexico,Strategic,16,88,Medium,Medium
+29,Outdoor Supplier 29,Canada,Standard,15,91,Medium,Medium
+30,Outdoor Supplier 30,USA,Standard,9,82,High,Medium
+31,Outdoor Supplier 31,Vietnam,Cost Leader,8,85,Medium,Medium
+32,Outdoor Supplier 32,Mexico,Strategic,15,92,Medium,Medium
+33,Outdoor Supplier 33,USA,Cost Leader,15,80,Medium,Medium
+34,Outdoor Supplier 34,USA,Strategic,13,90,Low,Medium
+35,Outdoor Supplier 35,USA,Cost Leader,18,94,Medium,Medium
+36,Outdoor Supplier 36,Mexico,Standard,20,85,High,Medium
+37,Outdoor Supplier 37,Mexico,Cost Leader,10,89,Low,Medium
+38,Outdoor Supplier 38,Canada,Cost Leader,19,91,High,Medium
+39,Outdoor Supplier 39,Mexico,Strategic,14,80,Low,Medium
+40,Outdoor Supplier 40,China,Strategic,10,83,Low,Medium
+41,Outdoor Supplier 41,Mexico,Standard,8,87,High,Medium
+42,Outdoor Supplier 42,USA,Cost Leader,19,95,Low,Medium
+43,Outdoor Supplier 43,Vietnam,Cost Leader,9,84,Medium,Medium
+44,Outdoor Supplier 44,Canada,Cost Leader,19,93,High,Medium
+45,Outdoor Supplier 45,China,Strategic,17,86,High,Medium
+46,Outdoor Supplier 46,Vietnam,Cost Leader,14,91,Low,Medium
+47,Outdoor Supplier 47,Canada,Standard,12,87,Low,Medium
+48,Outdoor Supplier 48,Mexico,Standard,7,87,Low,Medium
+49,Outdoor Supplier 49,Canada,Standard,7,81,Medium,Medium
+50,Outdoor Supplier 50,Mexico,Standard,11,82,High,Medium
+51,Outdoor Supplier 51,Canada,Cost Leader,9,95,High,Medium
+52,Outdoor Supplier 52,Canada,Strategic,19,95,Medium,Medium
+53,Outdoor Supplier 53,USA,Standard,17,86,Medium,Medium
+54,Outdoor Supplier 54,Vietnam,Strategic,14,91,High,Medium
+55,Outdoor Supplier 55,USA,Standard,13,81,High,Medium
+56,Outdoor Supplier 56,USA,Standard,10,90,Low,Medium
+57,Outdoor Supplier 57,Canada,Strategic,9,94,Medium,Medium
+58,Outdoor Supplier 58,Canada,Standard,14,94,High,Medium
+59,Outdoor Supplier 59,USA,Cost Leader,15,83,Low,Medium
+60,Outdoor Supplier 60,Canada,Standard,13,82,Medium,Medium
