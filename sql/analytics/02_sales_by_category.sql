@@ -9,8 +9,8 @@ SELECT
         NULLIF(SUM(s.SalesAmount), 0),
         2
     ) AS ProfitMarginPct
-FROM Fact.Sales s
-INNER JOIN Dim.Product p
+FROM Fact.Sales s WITH (NOLOCK)
+INNER JOIN Dim.Product p WITH (NOLOCK)
     ON s.ProductKey = p.ProductKey
 GROUP BY p.Category
 ORDER BY Revenue DESC;
