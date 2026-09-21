@@ -8,15 +8,18 @@ Process:
     1. Read experiment assignments from SQL Server
     2. Apply purchase probabilities
     3. Generate purchases
-    4. Generate revenue
-    5. Validate results
-    6. Compare Control vs Treatment
+    4. Generate purchase dates
+    5. Generate Profit
+    6. Print validation results
+    7. Load Staging.ExperimentResults   <-- Python bulk load
+    8. MERGE into Fact.CustomerExperiment  <-- SQL Server handles update
+    9. Close connection
 
 """
 
 import random
 import sys
-from datetime import timedelta
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import pandas as pd
@@ -56,7 +59,9 @@ JOIN Dim.Customer c WITH (NOLOCK)
 
 df = pd.read_sql(query, conn)
 
+# --------------------------------------------------
 # Purchase Probability
+# --------------------------------------------------
 def purchase_probability(group, segment):
     base = EXPERIMENT["groups"][group]["purchase_probability"]
 
@@ -66,11 +71,33 @@ def purchase_probability(group, segment):
 
     return min(probability, 0.95)    # Ensure probability does not exceed 0.95
 
-# Simulate Purchases (Bernoulli trial)
+# --------------------------------------------------
+# Generate Purchases (Bernoulli trial)
+# --------------------------------------------------
 df["Purchased"] = df.apply(
     lambda row: 
         random.random() < purchase_probability(row["GroupName"], row["Segment"]),
     axis=1
+)
+
+# --------------------------------------------------
+# Generate Purchase Dates
+# --------------------------------------------------
+start_date = datetime(2026, 1, 1)
+end_date = datetime(2026, 3, 31)
+
+days = (end_date - start_date).days
+
+def random_purchase_date():
+    return start_date + timedelta(
+        days=random.randint(0, days)
+    )
+
+df["PurchaseDate"] = df["Purchased"].apply(
+    lambda purchased:
+        random_purchase_date().date()
+        if purchased
+        else None
 )
 
 # --------------------------------------------------
@@ -157,6 +184,9 @@ revenue_results["RevenuePerCustomer"] = (
 
 print(revenue_results)
 
+# --------------------------------------------------
+# Profit Comparison
+# --------------------------------------------------
 print("\nProfit Results")
 profit_results = (
     df.groupby("GroupName")
@@ -186,6 +216,77 @@ print(df["Purchased"].value_counts())
 print()
 df[df["Purchased"]].groupby("Segment")["Revenue"].describe()
 """
+
+# --------------------------------------------------
+# Bulk Load Experiment Results
+# --------------------------------------------------
+cursor = conn.cursor()
+
+cursor.fast_executemany = True
+
+# Clear previous simulation results
+cursor.execute("TRUNCATE TABLE Staging.ExperimentResults")
+conn.commit()
+
+rows = list(
+    zip(
+        df["CustomerID"],
+        df["Purchased"].astype(int),
+        df["PurchaseDate"],
+        df["Revenue"],
+        df["Profit"]
+    )
+)
+
+insert_sql = """
+
+INSERT INTO Staging.ExperimentResults
+(
+    CustomerID,
+    Purchased,
+    PurchaseDate,
+    Revenue,
+    Profit
+)
+VALUES (?, ?, ?, ?, ?)
+
+"""
+
+cursor.executemany(insert_sql, rows)
+
+conn.commit()
+
+print()
+
+print(f"{len(rows):,} experiment rows loaded into Staging.ExperimentResults.")
+
+# --------------------------------------------------
+# MERGE Staging Results into Fact Table
+# --------------------------------------------------
+merge_sql = """
+MERGE Fact.CustomerExperiment AS TARGET
+USING Staging.ExperimentResults AS SOURCE
+ON
+    TARGET.ExperimentID = 1
+    AND TARGET.CustomerID = SOURCE.CustomerID
+WHEN MATCHED THEN
+UPDATE SET
+    TARGET.Purchased = SOURCE.Purchased,
+    TARGET.PurchaseDate = SOURCE.PurchaseDate,
+    TARGET.Revenue = SOURCE.Revenue,
+    TARGET.Profit = SOURCE.Profit;
+
+"""
+
+cursor.execute(merge_sql)
+
+conn.commit()
+
+print(
+    "Fact.CustomerExperiment synchronized."
+)
+
+cursor.close()
 
 # --------------------------------------------------
 # Close Connection
