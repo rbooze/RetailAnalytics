@@ -244,7 +244,7 @@ INSERT INTO Staging.ExperimentResults
 (
     CustomerID,
     Purchased,
-    PurchaseDate,
+    PurchaseDate,       
     Revenue,
     Profit
 )
