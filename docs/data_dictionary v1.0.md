@@ -1,5 +1,5 @@
 # Blue Ridge Outfitters Analytics Platform
-## Data Dictionary v1.0
+## Data Dictionary v1.1
 
 ### 1. Business Overview
 
